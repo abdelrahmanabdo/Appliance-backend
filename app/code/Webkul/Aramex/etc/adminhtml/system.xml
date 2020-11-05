@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Aramex
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="webkularamex" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Aramex Shipping</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled for Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sandbox_mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Test Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+                 <!-- <field id="method_title" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Method Title</label>
+                </field> -->
+                <field id="user" translate="label" type="password" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Aramex Username</label>
+                </field>
+                <field id="password" translate="label" type="password" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Password</label>
+                </field>
+                <field id="account" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Account Number</label>
+                </field>
+               <field id="entity" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Account Entity</label>
+                </field>
+                <field id="pin" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Account Pin</label>
+                </field>
+                <field id="accountcountry" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Account Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="unit_of_measure" translate="label" type="select" sortOrder="95" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Weight Unit</label>
+                    <source_model>Magento\Dhl\Model\Source\Method\Unitofmeasure</source_model>
+                    <frontend_model>Magento\Dhl\Block\Adminhtml\Unitofmeasure</frontend_model>
+                </field>
+                
+                <field id="domestic_methods" translate="label" type="multiselect" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Allowed Domestic Methods</label>
+                    <source_model>Webkul\Aramex\Model\Source\DomasticMethods</source_model>
+                </field>
+                <field id="international_methods" translate="label" type="multiselect" sortOrder="102" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Allowed International Methods</label>
+                    <source_model>Webkul\Aramex\Model\Source\InternationalMethods</source_model>
+                </field>
+                <field id="cod_instructions" translate="label" type="textarea" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instructions</label>
+                </field>
+                <field id="cod" translate="label" type="select" sortOrder="175" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Enable COD Service</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="cod_value" translate="label" type="text" sortOrder="176" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>COD Charge</label>
+                    <depends>
+                        <field id="cod">1</field>
+                    </depends>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="sallowspecific" translate="label" type="select" sortOrder="195" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Ship to Applicable Countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Ship to Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="handling_type" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Calculate Handling Fee</label>
+                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                </field>
+                <field id="handling_fee" translate="label" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Handling Fee</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                
+                <field id="specificerrmsg" translate="label" type="textarea" sortOrder="800" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Displayed Error Message</label>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="1940" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show Method if Not Applicable</label>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <!-- <field id="debug" translate="label" type="select" sortOrder="1950" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Debug</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> -->
+            </group>
+        </section>
+    </system>
+</config>

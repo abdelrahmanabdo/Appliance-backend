@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Webapi/etc/webapi.xsd">
+<route url="/V1/custom-orders" method="GET">
+    <service class="Road9\MagentoOrders\Api\OrderRepositoryInterface" method="getCustomerList"/>
+    <resources>
+        <resource ref="self" />
+    </resources>
+    <data>
+        <parameter name="customerId" force="true">%customer_id%</parameter>
+    </data>
+</route>
+</routes>
+
+

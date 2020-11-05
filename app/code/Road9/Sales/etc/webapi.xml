@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/orders/:id" method="GET">
+        <service class="Magento\Sales\Api\OrderRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/userOrders" method="GET">
+        <service class="Magento\Sales\Api\OrderRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+    </route>
+    <route url="/V1/orders/:id/statuses" method="GET">
+        <service class="Magento\Sales\Api\OrderManagementInterface" method="getStatus"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/:id/cancel" method="POST">
+        <service class="Magento\Sales\Api\OrderManagementInterface" method="cancel"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/:id/emails" method="POST">
+        <service class="Magento\Sales\Api\OrderManagementInterface" method="notify"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/:id/hold" method="POST">
+        <service class="Magento\Sales\Api\OrderManagementInterface" method="hold"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/create" method="PUT">
+        <service class="Magento\Sales\Api\OrderRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/:parent_id" method="PUT">
+        <service class="Magento\Sales\Api\OrderAddressRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/items/:id" method="GET">
+        <service class="Magento\Sales\Api\OrderItemRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+    <route url="/V1/orders/items" method="GET">
+        <service class="Magento\Sales\Api\OrderItemRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Magento_Sales::sales" />
+        </resources>
+    </route>
+</routes>

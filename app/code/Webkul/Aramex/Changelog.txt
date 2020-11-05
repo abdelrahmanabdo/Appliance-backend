@@ -1,0 +1,24 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 2.0.3 --------------------------------------
+	+ Compatible with Magento 2.2.* version 
+
+-------------------------------- Version 2.0.2 --------------------------------------
+
+	+ Compatible with Magento 2.1.* version 
+
+-------------------------------- Version 2.0.1 --------------------------------------
+
+	+ Admin can enable or disable Aramex COD Service.
+	+ Buyer can place order with Aramex Code Payment Method.
+	+ COD amount will display on Aramex Shipping Label.
+
+-------------------------------- Version 2.0.0 --------------------------------------
+
+	+ Calculate Shipping Cost According to Aramex Shipping.
+	+ Admin can enable and disable the Module.
+	+ Admin can generate Aramex Shipment Label in pdf format.
+    + Admin can see the Tracking Information.
